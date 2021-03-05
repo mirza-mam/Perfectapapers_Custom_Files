@@ -1,0 +1,2 @@
+[31-Dec-2019 21:52:06 UTC] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/perfecta/public_html/Perfectapapers_Custom_Files/Admin-Dashboard/admin-change-payment-status.php on line 11
+[31-Dec-2019 21:58:27 UTC] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/perfecta/public_html/Perfectapapers_Custom_Files/Admin-Dashboard/admin-change-payment-status.php on line 11

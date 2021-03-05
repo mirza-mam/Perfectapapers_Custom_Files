@@ -1,0 +1,69 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6117c776535e1ee865083e7c925241a1",
+    "packages": [
+        {
+            "name": "square/connect",
+            "version": "2.20191217.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/square/connect-php-sdk.git",
+                "reference": "d56b1194f1940212290d0b0548c539565d29dcbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/square/connect-php-sdk/zipball/d56b1194f1940212290d0b0548c539565d29dcbc",
+                "reference": "d56b1194f1940212290d0b0548c539565d29dcbc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SquareConnect\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Square, Inc.",
+                    "homepage": "https://squareup.com/developers"
+                }
+            ],
+            "description": "PHP client library for the Square Connect v2 API",
+            "homepage": "https://github.com/square/connect-php-sdk",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2019-12-19T18:50:51+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

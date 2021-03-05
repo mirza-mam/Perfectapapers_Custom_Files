@@ -1,0 +1,10 @@
+[31-Dec-2019 13:32:13 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/perfecta/public_html/Perfectapapers_Custom_Files/includes/sessions_check.php on line 2
+[31-Dec-2019 13:32:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-index.php:1) in /home/perfecta/public_html/Perfectapapers_Custom_Files/includes/sessions_check.php on line 21
+[11-Nov-2020 08:38:15 UTC] PHP Notice:  Undefined index: user_email in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 5
+[11-Nov-2020 08:38:15 UTC] PHP Notice:  Undefined index: user_id in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 5
+[11-Nov-2020 08:38:15 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 13
+[11-Nov-2020 08:38:15 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-index.php on line 48
+[26-Nov-2020 23:11:44 UTC] PHP Notice:  Undefined index: user_email in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 5
+[26-Nov-2020 23:11:44 UTC] PHP Notice:  Undefined index: user_id in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 5
+[26-Nov-2020 23:11:44 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-dropdown.php on line 13
+[26-Nov-2020 23:11:44 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/perfecta/public_html/Perfectapapers_Custom_Files/User-Dashboard/user-dashboard-index.php on line 48

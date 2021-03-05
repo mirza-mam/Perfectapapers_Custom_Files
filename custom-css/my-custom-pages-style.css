@@ -1,0 +1,370 @@
+*{
+	box-sizing: border-box !important;
+}
+
+
+.navbar_cutoms {
+	background-color:white;
+	
+	padding: 0%;
+}
+
+.navbar_cutoms div ul li a{
+	font-family: "Matura MT Script Capitals" , sans-serif;
+	font-size: 18px;
+	letter-spacing: 0.6;
+	color: #666666 !important;
+	padding: 10px 8px 10px 8px !important;
+	transition: 0.3s;
+	
+}
+
+.navbar_cutoms div ul li a:hover{
+	color: #ffb606 !important;
+	
+}
+
+.navbar_cutoms .navbar_Brand_Img{
+	
+	width: 20%;
+}
+
+.navbar_cutoms .navbar_Brand_Img a img{
+	margin-left: 100px;
+}
+
+
+.footer_cutoms{
+	background-color: #666;
+}
+
+.order_now_heading{
+	text-align: center;
+	margin: 10px;
+	color: #666;
+	font-family: "Roboto" , sans-serif;
+	font-size: 40px; 
+	font-weight: 300; 
+	letter-spacing: 2px; 
+}
+
+.forms-main-container, .review-order-main-container{
+	height: auto;
+	border-radius: 15px;
+	border: 1px solid #ced4da; 
+	padding: 60px;
+}
+
+.forms-main-container{
+	width: 70%;
+	margin: 20px 0px 70px 120px;
+}
+
+.review-order-main-container{
+	width: 90%;
+	margin: auto;
+
+}
+
+
+.next-btn{
+	border:1px solid #ffb606;
+	border-radius: 30px;
+	background-color: #ffb606;
+	padding: 8px;
+	color: white;
+	width: 130px;
+	transition: 0.5s;
+}
+
+.review_order_btns_div{
+	width: 100%;
+	margin: auto;
+}
+
+
+.review_order_btns_div div button{
+	width: 100%;
+}
+
+.checkout-btn{
+	border:1px solid #ffb606;
+	border-radius: .3rem;
+	background-color: #ffb606;
+	color: white;
+	width: 260px;
+	transition: 0.5s;
+	padding: .5rem 1rem;
+    font-size: 1.25rem;  
+}
+
+.next-btn:hover, .checkout-btn:hover{
+	background-color: #666;
+	border:1px solid #666;
+}
+
+#user-details-form-div{
+	display: none;
+	margin-top: 30px;
+}
+
+.Order_Now_Wall_sect{
+	width: 100%;
+	height: 150px;
+	background-color: #666666;
+}
+
+.Order_Now_Wall_sect span{ 
+	color: white;
+	font-family: "Roboto" , sans-serif;
+	font-weight: normal;
+	font-size: 61px;
+	float: left;
+	width: 35%;
+	height: 150px;
+	text-align: center;
+	padding: 30px 0px 0px 0px;
+	
+}
+
+.Order_Now_Wall_sect h1{ 
+	color: white;
+	font-family: "Roboto" , sans-serif;
+	font-weight: 200;
+	font-size: 20px;
+	float: left;
+	width: 65%;
+	padding: 65px 0px 0px 10px;
+	letter-spacing: 2px;
+	height: 150px;
+	text-align: left;
+	
+}
+
+.order_review_form{
+
+	width: 70%;
+	margin: auto;
+}
+
+.order_review_form h6{
+	line-height: 30px;
+	letter-spacing: 1px;
+	color:#8A8A8A;
+	text-align: center;
+}
+
+.form-center{
+	width: 500px;
+	margin: auto;
+	padding: 10px 0px 20px 100px;
+}
+
+.form-center-for-signup-modal{
+	width: 450px;
+	margin: auto;
+	padding: 10px 0px 10px 0px;
+}
+
+.form-btn{
+    border:1px solid #ffb606;
+    border-radius: 30px;
+    background-color: #ffb606;
+    padding: 8px;
+    color: white;
+    width: 130px;
+    transition: 0.5s;
+    }
+      
+.form-btn:hover{
+	background-color: #666;
+	border:1px solid #666;
+}
+
+.login_form_bottom_margin{
+	margin-bottom: 90px;
+}
+
+.footer_customs{
+	height: 250px;
+	background-color: #666666;
+	padding-top: 40px;
+}
+
+.footer_list  li{
+	text-align:left;
+	list-style-type: none;
+	margin:10px;
+	font-weight:lighter;
+	font-family:"Roboto",sans-serif;
+}
+
+.footer_list  li a{
+	color: white;
+	text-decoration: none;
+}
+
+.footer_list  li a:hover, .footer_bottom div a:hover{
+	color: #FFB606;
+	transition: 0.4s;
+}
+
+.footer_VISA_Img_Container{
+	
+	height: 90px;
+	width: 100%;
+	padding: 40px 0px 0px 67px;
+}
+
+.footer_MC_Img_Container{
+	
+	height: 90px;
+	width: 100%;
+	padding: 0px 0px 0px 75px;
+}
+
+.footer_Skrill_Img_Container{
+	
+	padding-top: 40px;
+}
+
+.footer_AboutUs_Col h1{
+	font-family:"Matura MT Script Capitals";
+	color:white;
+	text-align:left;
+	margin-bottom:0px;
+}
+
+.footer_AboutUs_Col p{
+	font-family:"Roboto",sans-serif;
+	text-align:justify;
+	color:white;
+	font-weight:lighter;
+}
+
+.footer_bottom{
+	background-color: #545454;
+	padding: 15px 0;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.footer_bottom div{
+	
+	margin: auto;
+	width: 337px;
+	color:#949494;
+}
+
+.footer_bottom div a{
+	color: white;
+	text-decoration: none;
+}
+
+/* --------------------------------Media Queries for Tablet View --------------------------------- */
+@media screen and (max-width: 768px) {
+
+	.forms-main-container{
+		padding: 40px;
+		margin: 20px;
+		width: 95%;
+	}
+
+	.Order_Now_Wall_sect span{ 
+		font-size: 44px;
+	
+		padding: 46px 0px 0px 0px;	
+	}
+	
+	.Order_Now_Wall_sect h1{ 
+		font-size: 14px;
+		
+	}
+	
+	
+  }
+
+
+/* --------------------------------Media Queries for Medium Mobile View --------------------------------- */
+@media screen and (max-width: 425px) {
+
+	.form-center{
+		width: 100%;
+		padding-left: 10px;
+	}
+
+	.forms-main-container{
+		width: 100%;
+		padding: 10px;
+		margin: 0px;
+	}
+
+	.custom_form_control{
+		width: 83% !important;
+	}
+
+	.Order_Now_Wall_sect{
+		height: 100px;
+	}
+	
+	.Order_Now_Wall_sect span{ 
+		font-size: 21px;
+		
+		padding: 39px 0px 0px 0px;	
+		height: 100px;
+	}
+	
+	.Order_Now_Wall_sect h1{ 
+		font-size: 14px;
+		
+		height: 100px;
+		padding: 35px 0px 0px 10px;
+	}
+
+  } 
+  
+/* --------------------------------Media Queries for Small Mobile View --------------------------------- */
+  @media screen and (max-width: 375px) {
+
+	.custom_form_control{
+		width: 70% !important;
+	}
+	
+	.checkout-btn{
+		 width:  180px;
+	  }
+  } 
+
+
+/* --------------------------------Media Queries for Extra Small Mobile View --------------------------------- */
+  @media screen and (max-width: 320px) {
+
+	.custom_form_control{
+		width: 60% !important;
+	}
+
+	.Order_Now_Wall_sect{
+		height: auto;
+		padding: 5px;
+	}
+	
+	.Order_Now_Wall_sect span{ 
+		float:none;
+		font-size: 21px;
+		
+		padding: 0px 100px 0px 93px;	
+		height: 35px;
+		width: 100%;
+	}
+	
+	.Order_Now_Wall_sect h1{ 
+		float:none;
+		font-size: 17px;
+		text-align: center;
+		
+		height: 70px;
+		width: 100%;
+		padding: 0px 0px 0px 10px;
+	}
+	
+  } 
