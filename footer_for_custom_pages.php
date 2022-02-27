@@ -5,10 +5,10 @@
     <div class="row"> 
       <div class="col-md-3"> 
         <ol class="footer_list"> 
-          <li> <a href="#"> FAQ's </a> </li>
-          <li> <a href="#"> Privacy Policy </a> </li>
-          <li> <a href="#"> Terms & Conditions </a> </li>
-          <li> <a href="#"> Order Now </a> </li>
+          <li> <a href="https://perfectapapers.com/faq/"> FAQ's </a> </li>
+          <li> <a href="https://perfectapapers.com/privacy-policy/"> Privacy Policy </a> </li>
+          <li> <a href="https://perfectapapers.com/terms-conditions/"> Terms & Conditions </a> </li>
+          <li> <a href="order-now.php"> Order Now </a> </li>
         </ol>
       </div>
 
@@ -36,5 +36,5 @@
 </footer>
 <!-- Footer Bottom -->
 <div class="footer_bottom">
-  <div> Copyright 2020 - <a href="#"> Designed & Developed By M.A.M Developers </a> </div>
+  <div> Copyright 2020 - <a href="https://www.facebook.com/mam.agift1" target="_blank"> Designed & Developed By M.A.M Developers </a> </div>
 </div>

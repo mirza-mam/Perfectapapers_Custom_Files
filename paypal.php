@@ -7,17 +7,9 @@ require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'includes\connection.php';
+require 'includes/connection.php';
 // require "include\connection.php";
 $con_obj = new connection;
-// echo $con_obj->baseurl;die();
-var_dump($_GET['paypal_id']);
-var_dump($_GET['payer_id']);
-var_dump($_GET['payer_email']);
-var_dump($_GET['payer_name']);
-var_dump($_GET['amounts']);
-var_dump($_GET['merchant_id']);
-var_dump($_GET['merchant_email']);
 
 // $link = mysqli_connect("localhost", "root", "", "perfecta_custom_db");
 // Check connection
@@ -44,7 +36,7 @@ if(mysqli_query($con_obj->connect_db(), $sql)){
   
       //Recipients
       $mail->setFrom('noreply@perfectapapers.com', 'noreply@perfectapapers');
-      $mail->addAddress('qazimazhar57@gmail.com', 'owner');     // Add a recipient
+      $mail->addAddress('aagiftforall@yahoo.com', 'owner');     // Add a recipient // aagiftforall@yahoo.com
       $html = sprintf("<!DOCTYPE html>
           <html>
           <head>
@@ -124,12 +116,12 @@ if(mysqli_query($con_obj->connect_db(), $sql)){
           // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
           // return;
           if ($mail->send()) {
+              header("Location: ".$con_obj->baseurl."success.php");
               echo "Your Payment has been made Successfully";
           }    
   } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
-    header("Location: ".$con_obj->baseurl."/success.php");
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($con_obj->connect_db());
 }
@@ -140,5 +132,3 @@ mysqli_close($con_obj->connect_db());
 
 
 
-
-?>

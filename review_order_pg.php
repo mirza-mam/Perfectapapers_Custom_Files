@@ -64,7 +64,7 @@ if( isset( $_SESSION['checkout-btn'] ) || isset( $_SESSION['order_now_signup_btn
 			<h6> Citaion Style: <?php echo $order_info_row['citation_style']; ?> </h6>
 			<h6> No# of Sources: <?php echo $order_info_row['no_of_sources']; ?> </h6>
 			<h6> Description: <?php echo $order_info_row['description']; ?> </h6>
-			<h6> Total Price: <?php echo $order_info_row['order_price']; ?> </h6>
+			<h6> Total Price: <?php echo $order_info_row['order_price']; ?>$ </h6>
 			<br>
 			
 		</div>

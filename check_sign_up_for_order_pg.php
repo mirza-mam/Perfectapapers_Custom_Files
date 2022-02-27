@@ -167,7 +167,7 @@ exit;
 		 
 			"user_sources" => filter_data( $_POST['user-sources'] ),
 		 
-			"user_assignment_description" => filter_data( $_POST['user-assignment-description'] ),
+			"user_assignment_description" => filter_data( $_POST['user-assignment-description'] )
 		 	
 				);
 			 // This Data should be added in the array later

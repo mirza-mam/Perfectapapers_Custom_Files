@@ -10,7 +10,7 @@ $msg = "Aslam o Alykum,
 $msg = wordwrap($msg,70);
 
     // send email
-$mail_sent = mail("qazimazhar57@gmail.com","New Order on Perfectapapers",$msg);
+$mail_sent = mail("aagiftforall@gmail.com","New Order on Perfectapapers",$msg);
 
            mail("usamasheikh1994@gmail.com","New Order on Perfectapapers",$msg);
 

@@ -1,42 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 *{
 	box-sizing: border-box !important;
 }
 
-
-.navbar_cutoms {
+.navbar_customs {
 	background-color:white;
 	
 	padding: 0%;
 }
 
-.navbar_cutoms div ul li a{
-	font-family: "Matura MT Script Capitals" , sans-serif;
-	font-size: 18px;
-	letter-spacing: 0.6;
+.navbar_customs div ul li a{
+	font-family: Roboto Slab;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: .2px;
+	text-transform: uppercase;
 	color: #666666 !important;
 	padding: 10px 8px 10px 8px !important;
 	transition: 0.3s;
 	
 }
 
-.navbar_cutoms div ul li a:hover{
+.navbar_customs div ul li a:hover{
 	color: #ffb606 !important;
 	
 }
 
-.navbar_cutoms .navbar_Brand_Img{
+.navbar_customs .navbar_Brand_Img{
 	
 	width: 20%;
 }
 
-.navbar_cutoms .navbar_Brand_Img a img{
+.navbar_customs .navbar_Brand_Img a img{
 	margin-left: 100px;
 }
 
-
-.footer_cutoms{
-	background-color: #666;
-}
 
 .order_now_heading{
 	text-align: center;
@@ -223,8 +222,7 @@
 	padding: 0px 0px 0px 75px;
 }
 
-.footer_Skrill_Img_Container{
-	
+.footer_Skrill_Img_Container{	
 	padding-top: 40px;
 }
 
@@ -264,6 +262,15 @@
 /* --------------------------------Media Queries for Tablet View --------------------------------- */
 @media screen and (max-width: 768px) {
 
+	.navbar_customs .navbar_Brand_Img{
+	
+		width: 37%;
+	}
+
+	.navbar_customs .navbar_Brand_Img a img{
+		margin-left: 40px;
+	}
+
 	.forms-main-container{
 		padding: 40px;
 		margin: 20px;
@@ -280,13 +287,30 @@
 		font-size: 14px;
 		
 	}
+
+	.footer_AboutUs_Col h1{
+		font-size: 24px;
+	}
+	
+	.footer_AboutUs_Col p{
+		font-size: 15px;
+	}
 	
 	
   }
 
 
-/* --------------------------------Media Queries for Medium Mobile View --------------------------------- */
+/* --------------------------------Media Queries for Large Mobile View --------------------------------- */
 @media screen and (max-width: 425px) {
+
+	.navbar_customs .navbar_Brand_Img{
+		
+		width: 65%;
+	}
+
+	.navbar_customs .navbar_Brand_Img a img{
+		margin-left: 20px;
+	}
 
 	.form-center{
 		width: 100%;
@@ -304,26 +328,40 @@
 	}
 
 	.Order_Now_Wall_sect{
-		height: 100px;
+		height: auto;
+		padding: 5px;
 	}
 	
 	.Order_Now_Wall_sect span{ 
+		float:none;
 		font-size: 21px;
 		
-		padding: 39px 0px 0px 0px;	
-		height: 100px;
+		padding: 0px 100px 0px 93px;	
+		height: 35px;
+		width: 100%;
 	}
 	
 	.Order_Now_Wall_sect h1{ 
-		font-size: 14px;
 		
-		height: 100px;
-		padding: 35px 0px 0px 10px;
+		float:none;
+		font-size: 17px;
+		text-align: center;
+		height: 70px;
+		width: 100%;
+		padding: 20px 0px 0px 10px;
+	}
+
+	.footer_customs{
+		height: auto;
+	}
+
+	.footer_Skrill_Img_Container{
+		height: 250px;
 	}
 
   } 
   
-/* --------------------------------Media Queries for Small Mobile View --------------------------------- */
+/* --------------------------------Media Queries for Medium Mobile View --------------------------------- */
   @media screen and (max-width: 375px) {
 
 	.custom_form_control{
@@ -333,11 +371,27 @@
 	.checkout-btn{
 		 width:  180px;
 	  }
+
+	.Order_Now_Wall_sect h1{ 
+		
+		float:none;
+		font-size: 17px;
+		text-align: center;
+		height: 70px;
+		width: 100%;
+		padding: 10px 0px 0px 10px;
+	}
+
   } 
 
 
-/* --------------------------------Media Queries for Extra Small Mobile View --------------------------------- */
+/* --------------------------------Media Queries for Small Mobile View --------------------------------- */
   @media screen and (max-width: 320px) {
+
+	.navbar_customs .navbar_Brand_Img{
+		
+		width: 81%;
+	}
 
 	.custom_form_control{
 		width: 60% !important;
@@ -361,10 +415,13 @@
 		float:none;
 		font-size: 17px;
 		text-align: center;
-		
 		height: 70px;
 		width: 100%;
-		padding: 0px 0px 0px 10px;
+		padding: 10px 0px 0px 10px;
+	}
+
+	.footer_bottom{
+		display: none;
 	}
 	
   } 

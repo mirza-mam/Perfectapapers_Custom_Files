@@ -10,10 +10,10 @@ if( isset( $_GET['logout_btn'] ) )
 	
 	//Cookie Destroy
 	setcookie("user_email", "", time() - 86400 * 365 , "/" );
-	setcookie("user_pass", "", time() - 86400 * 365 , "/" );
 	setcookie("user_id", "", time() - 86400 * 365 , "/" );
+	setcookie("role_id", "", time() - 86400 * 365 , "/" );
 
-	header("location:../Login_user.php");
+	header("location:../login_form.php");
 	
 	 }
 	

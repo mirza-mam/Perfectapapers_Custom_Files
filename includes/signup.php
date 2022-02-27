@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include_once("super_person.php");
 
 class signup extends super_person{
@@ -7,11 +6,12 @@ class signup extends super_person{
 	//Defining this abstract function
 	public function insert_data(){
 		
-		$this->name =  $this->filter_data($_POST['user_name']);
-		$this->contact =  $this->filter_data($_POST['user_contact']);
-		$this->email =  $this->filter_data($_POST['user_email']);
-		$this->pass =  $this->filter_data($_POST['user_password']);
-		
+		// filter_var() Fucntion is Used to remove all the illegal Characters from User Input
+		$this->name = filter_var($_POST['user_name'], FILTER_SANITIZE_STRING);
+		$this->contact =  filter_var($_POST['user_contact'], FILTER_SANITIZE_STRING);
+		$this->email =   filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL);
+		$this->pass =  trim( filter_var($_POST['user_password'], FILTER_SANITIZE_STRING) );
+
 		$q_result = $this->run_query( "SELECT * FROM users_tbl WHERE user_email = '$this->email'");
 		
 		if( mysqli_num_rows($q_result) > 0)
@@ -19,9 +19,11 @@ class signup extends super_person{
 			echo "Sorry you are already registered with this email, Use a different one.";
 		}
 		else{
-			
-			$q_result = $this->run_query("INSERT INTO users_tbl(user_name,user_email,user_password,user_contact,role_id) VALUES ( '$this->name' , '$this->email' , '$this->pass' , '$this->contact' , '0')");
-		
+
+			// Creating Password Hash
+			$pass_hash = password_hash($this->pass,PASSWORD_ARGON2I);
+					
+			$q_result = $this->run_query("INSERT INTO users_tbl(user_name,user_email,user_password,user_contact,role_id) VALUES ( '$this->name' , '$this->email' , '$pass_hash' , '$this->contact' , '0')");
 
 				if( $q_result )
 				{				
@@ -30,15 +32,15 @@ class signup extends super_person{
 					{
 				
 						setcookie("user_email", $this->email, time() + 86400 * 60 , "/" );
-						setcookie("user_pass", $this->pass, time() + 86400 * 60 , "/" );
 						setcookie("user_id", $this->sp_last_id, time() + 86400 * 60 , "/" );
+						setcookie("role_id", 0, time() + 86400 * 60 , "/" );
 						
 					}
 
 					
 					$_SESSION['user_email'] = $this->email;
 					$_SESSION['user_id'] = $this->sp_last_id;
-					$_SESSION['role_id'] = "0";
+					$_SESSION['role_id'] = 0;
 					
 					
 					/*
@@ -81,5 +83,3 @@ class signup extends super_person{
 
 	
 };
-
-?> 

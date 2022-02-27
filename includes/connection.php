@@ -1,16 +1,16 @@
 <?php
 
 	class connection{
-		public $baseurl = 'http://localhost/Perfectapapers_Custom_Files/';
+		
 		private $con;
 		private $con_last_id;
 		
 		public function connect_db(){
 			
 			/* For Localhost */
-		// $this->con	= new MySQLi('localhost','root','','perfecta_custom_db');
-			/* For Live DB  */
 		$this->con	= new MySQLi('localhost','root','','perfecta_custom_db');
+			/* For Live DB  */
+		// $this->con	= new MySQLi('localhost','perfecta_admin','n;Go%cU4yVx{','perfecta_custom_db');
 			
 			if( $this->con )
 			{	

@@ -25,11 +25,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
     <!-- ****************** Navigation Bar For Logged In Users***************************** -->
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light navbar_cutoms">
+        <nav class="navbar navbar-expand-lg navbar-light navbar_customs">
 
             <div class="navbar_Brand_Img"> 
             <a class="navbar-brand" href="https://perfectapapers.com">
-            <img src="order-images/order-now-favicon.png" width="50%">
+            <img src="custom-assets/images/logo-for-navbar.jpg" width="50%">
             </a>
             </div>
 
@@ -97,11 +97,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
     <!-- ******************Navigation Bar For Logged Out Users***************************** -->
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light navbar_cutoms">
+        <nav class="navbar navbar-expand-lg navbar-light navbar_customs">
 
             <div class="navbar_Brand_Img"> 
             <a class="navbar-brand" href="https://perfectapapers.com">
-            <img src="order-images/order-now-favicon.png" width="50%">
+            <img src="custom-assets/images/logo-for-navbar.jpg" width="50%">
             </a>
             </div>
 
@@ -143,8 +143,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                             Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="Signup_form.php"><em class="fa fa-user-plus mr-1"></em>Sign Up</a>
-                            <a class="dropdown-item" href="Login_user.php"><em class="fa fa-sign-in mr-1"></em>Login</a>
+                            <a class="dropdown-item" href="signup_form.php"><em class="fa fa-user-plus mr-1"></em>Sign Up</a>
+                            <a class="dropdown-item" href="login_form.php"><em class="fa fa-sign-in mr-1"></em>Login</a>
                         </div>
                     </li>
                 </ul>

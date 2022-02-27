@@ -6,12 +6,12 @@
         
         <li class="nav-item"><a class="nav-link active" href="user-dashboard-index.php"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
         
-        <li class="nav-item"><a class="nav-link" href="completed-orders.php"><em class="fa fa-calendar-o"></em> completed orders</a></li>
+        <li class="nav-item"><a class="nav-link" href="completed-orders.php"><em class="fa fa-check"></em> completed orders</a></li>
         
-        <li class="nav-item"><a class="nav-link" href="orders-in-progress.php"><em class="fa fa-bar-chart"></em> orders in progress</a></li>
+        <li class="nav-item"><a class="nav-link" href="orders-in-progress.php"><em class="fa fa-spinner"></em> orders in progress</a></li>
         
-        <li class="nav-item"><a class="nav-link" href="revisions-in-progress.php"><em class="fa fa-hand-o-up"></em> revisions in progress</a></li>
-        <li class="nav-item"><a class="nav-link" href="user-settings.php"><em class="fa fa-pencil-square-o"></em> User Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="revisions-in-progress.php"><em class="fa fa-spinner"></em> revisions in progress</a></li>
+        <li class="nav-item"><a class="nav-link" href="user-settings.php"><em class="fa fa-cogs"></em> User Settings</a></li>
 
     </ul>
 </nav>
