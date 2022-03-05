@@ -41,7 +41,6 @@ class fetch_and_show extends super_person
 
 		//$given_limit_of_recent_orders = It was used as function Parameter
 		/*$q_result = $this->run_query("SELECT * FROM order_tbl ORDER BY order_id DESC LIMIT $given_limit_of_recent_orders "); */
-
 		$q_result = $this->run_query("SELECT * FROM order_tbl ORDER BY order_id DESC");
 
 		return ($q_result);
