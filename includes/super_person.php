@@ -32,6 +32,7 @@ include("connection.php");
 		abstract function update_data();
 		abstract function delete_data();
 		
+		// $input = 10
 		protected function filter_data($input){
 	//connection.php included again in this function bcz $con has local scope
 	//include("includes/connection.php");
@@ -50,7 +51,7 @@ include("connection.php");
 			
 			
 			if( $return_result )
-			{                 		//This is the Built In method of Connection Class for fetching Last ID
+			{ //This is the Built In method of Connection Class for fetching Last ID
 				$this->sp_last_id = $con_obj->get_last_inserted_id();
 			}
 			
