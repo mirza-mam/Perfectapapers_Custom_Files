@@ -5,9 +5,10 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title> Order Now </title>
+	<title> Order_NOW</title>
 
 	<?php include_once("assests_links.php"); ?>
+	  
 
 </head>
 
@@ -288,8 +289,10 @@
 						<div class="" id="">
 
 							<h5> Total Price: </h5>
+					
 							<h1>$<span id="user-tp" onch>0</span></h1>
-							<input type="hidden" id="user-tp-inputField" name="user-tp-inputField">
+							<!--because php cannot read the paragraphs or span tags it can only read input field therefore we added input field in here!-->
+							<input  type ="hidden" id="user-tp-inputField" name="user-tp-inputField">
 							<input type="checkbox" id="user-tp-chk-bx" name="user-tp-chk-bx"> Upfront Plan
 
 						</div>
@@ -439,7 +442,9 @@
 
 					</div>
 
-					<button type="submit" id="checkout-btn" name="checkout-btn" class="checkout-btn" onclick="check_user_sign_up()">Review Order Details</button>
+					<button type="submit" id="checkout-btn" name="checkout-btn" 
+					
+			    class="checkout-btn" onclick="check_user_sign_up()">Review Order Details</button>
 
 					<span id="user-assignment-details-err" style="color:red; display: block;"> </span>
 				</div>
@@ -613,7 +618,7 @@
 			window.academic = $("#user-academic-level-price-form").val();
 			window.pages = $("#user-number-of-pages-price-form").val();
 			window.contact_code = $("#user-contact-code-price-form").val();
-			window.contact_number = $("#user-contact-price-form").val();
+			window.contact_number = $("#user-contact-price-form").va
 			window.deadline_time = $("#user-deadline-time-price-form").val();
 			window.deadline_date = $("#user-deadline-date-price-form").val();
 
