@@ -17,7 +17,7 @@
 	<!--Form Main Container-->
 	<div class="form-center">
 		<h3> Please enter the details to SignUp... </h3>
-		<span id="signup_error" style="color:red;"> </span>
+		<span id="signup_error"> </span>
 
 		<form method="post" enctype="multipart/form-data" action="includes/operations_user.php">
 			<div class="form-group col-md-8">
@@ -41,7 +41,7 @@
 				<small id="emailHelp" class="form-text text-muted">We will keep everything confidential. </small>
 			</div>
 			<div class="form-group col-md-8">
-				<label for="user_password">Password</label>
+				<label for="user_password" id="password_error">Password</label>
 				<input type="password" class="form-control" id="user_password" name="user_password" placeholder="Enter the correct Password">
 			</div>
 			<div class="form-check">
@@ -61,15 +61,19 @@
 
 				$("#signup_error").html("");
 				$("#email_error").html("");
+				$("#password_error").html("");
 				$("#contact_error").html("");
 
 				var name = $("#user_name").val();
 				var phone = $("#user_contact").val();
 				var email = $("#user_email").val();
 				var pass = $("#user_password").val();
+        //var passreg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+			
 
 
 				if (name == "" || phone == "" || email == "" || pass == "") {
+					$("#signup_error").css("color", "red");
 					$("#signup_error").html("Please fill all of the given fields to Signup!");
 					return false;
 				} else {
@@ -86,7 +90,12 @@
 						return false;
 					}
 
+					if( !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(pass)){
+					$("#password_error").css("color", "red");
+					$("#password_error").html("Please enter a valid Password");
+					return false;
 				}
+			}
 			}
 
 		);

@@ -1,4 +1,4 @@
 <?php
 
-
-echo password_hash("123",PASSWORD_ARGON2I);
+//password hash
+echo password_hash("muzhgan@22",PASSWORD_ARGON2I);

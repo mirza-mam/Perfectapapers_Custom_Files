@@ -5,7 +5,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title> Order_NOW</title>
+	<title> Order Now</title>
 
 	<?php include_once("assests_links.php"); ?>
 	  
