@@ -11,7 +11,7 @@ class connection
 		/* For Localhost */
 		//  $this->con	= new MySQLi('localhost','root','','perfecta_custom_db');
 		/* For Live DB  */
-		$this->con	= new MySQLi('localhost', 'perfect2_custom_admin', '&KL={u_Ic6;F', 'perfect2_custom_db');
+		$this->con = new MySQLi('localhost', 'perfect2_custom_admin', '&KL={u_Ic6;F', 'perfect2_custom_db');
 		if ($this->con) {
 			return $this->con;
 		} else {
