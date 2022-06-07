@@ -19,7 +19,7 @@
 	<div class="form-center login_form_bottom_margin">
 		<h3> Please enter the details to Login... </h3>
 		<span id="login_error" style="color: red;"> </span>
-		<form method="post" enctype="multipart/form-data" action="includes/operations_user.php">
+		<form onsubmit="return false">
 			<div class="form-group col-md-8">
 				<label for="user_email" id="email_error">Email address</label>
 				<input type="email" class="form-control" id="user_email" name="user_email" aria-describedby="emailHelp" placeholder="Enter your email here...">
@@ -64,10 +64,25 @@
 						return false;
 					}
 
+					$.ajax({
+						url: "includes/operations_user.php",
+						type: "POST",
+						data: {
+							//after clicking the button the value will be taken 
+							login_form_btn: true,
+							user_email: email,
+							user_password: pass
+						},
+						success: function(r) {
+							$("#email_error").html(r);
+							$("#email_error").css("color", "red");
+							return false;
+						}
+					});
 				}
-			}
+			});
 
-		);
+
 	</script>
 
 	<?php include_once("tawkTo.php"); ?>
