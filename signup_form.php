@@ -68,10 +68,7 @@
 				var phone = $("#user_contact").val();
 				var email = $("#user_email").val();
 				var pass = $("#user_password").val();
-        //var passreg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-			
-
-
+        		//var passreg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 				if (name == "" || phone == "" || email == "" || pass == "") {
 					$("#signup_error").css("color", "red");
 					$("#signup_error").html("Please fill all of the given fields to Signup!");
@@ -92,7 +89,7 @@
 
 					if( !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(pass)){
 					$("#password_error").css("color", "red");
-					$("#password_error").html("Please enter a valid Password");
+					$("#password_error").html("Your password must be 8 characters long with one letter, number & special character");
 					return false;
 				}
 
