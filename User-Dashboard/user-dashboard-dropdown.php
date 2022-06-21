@@ -1,6 +1,11 @@
 <?php
 //session_start();
 include_once("../includes/fetch_and_show.php");
+if (isset($_COOKIE['user_id'])) {
+	$_SESSION['user_email'] = $_COOKIE['user_email'];
+	$_SESSION['user_id'] = $_COOKIE['user_id'];
+	$_SESSION['role_id'] = $_COOKIE['role_id'];
+}
 
 if ($_SESSION['role_id'] == 0) {
 
@@ -10,6 +15,7 @@ if ($_SESSION['role_id'] == 0) {
 	echo "<script> window.location.replace('../login_form.php'); </script>";
 	exit;
 }
+
 
 
 ?>

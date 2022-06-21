@@ -1,5 +1,10 @@
 <!-- New Nav Starts -->
 <?php
+if(isset($_COOKIE['user_id'])){
+    $_SESSION['user_id'] = $_COOKIE['user_id'];
+    $_SESSION['user_email'] =  $_COOKIE['user_email'];
+    $_SESSION['role_id'] =  $_COOKIE['role_id'];
+}
 
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 

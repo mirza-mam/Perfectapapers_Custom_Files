@@ -1,5 +1,6 @@
 <?php
 session_start();
+
    
 /*  
     This piece of Code will only Check that if the USER had clicked the Remember Me option 

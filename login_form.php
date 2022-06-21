@@ -52,7 +52,12 @@
 
 				var email = $("#user_email").val();
 				var pass = $("#user_password").val();
+				// var user_login_remember_me = $("#user_login_remember_me").prop();
+				if ($("#user_login_remember_me").prop("checked") == true) {
+					var user_login_remember_me = 1;
 
+				}
+				// return false;
 				if (email == "" || pass == "") {
 					$("#login_error").html("Please fill all of the given fields in order to Login!");
 					return false;
@@ -71,18 +76,18 @@
 							//after clicking the button the value will be taken 
 							login_form_btn: true,
 							user_email: email,
-							user_password: pass
+							user_password: pass,
+							user_login_remember_me: user_login_remember_me
 						},
 						success: function(r) {
 							$("#email_error").html(r);
 							$("#email_error").css("color", "red");
+
 							return false;
 						}
 					});
 				}
 			});
-
-
 	</script>
 
 	<?php include_once("tawkTo.php"); ?>

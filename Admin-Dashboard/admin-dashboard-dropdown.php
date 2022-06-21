@@ -1,6 +1,10 @@
 <?php
 include_once("../includes/fetch_and_show.php");
-
+if (isset($_COOKIE['user_id'])) {
+	$_SESSION['user_email'] = $_COOKIE['user_email'];
+	$_SESSION['user_id'] = $_COOKIE['user_id'];
+	$_SESSION['role_id'] = $_COOKIE['role_id'];
+}
 if ($_SESSION['role_id'] == 2) {
 	$obj = new fetch_and_show($_SESSION['user_email'], $_SESSION['user_id']);
 	$user_data_row = $obj->show_data();

@@ -22,12 +22,23 @@ class login extends super_person
 				$this->email = $row['user_email'];
 				$this->user_id = $row['user_id'];
 				$this->role_id = $row['role_id'];
+				// if (isset($_POST['user_login_remember_me'])) {
+				// 	// setcookie("user_email", $this->email, time() + 86400 * 60, "/");
+				// 	// setcookie("user_id", $this->user_id, time() + 86400 * 60, "/");
+				// 	// setcookie("role_id", $this->role_id, time() + 86400 * 60, "/");
+				// 	echo "Clicked";
+				// }
+        // echo $_POST['user_login_remember_me']; exit;
 
+
+
+				
 				if (isset($_POST['user_login_remember_me'])) {
 					setcookie("user_email", $this->email, time() + 86400 * 60, "/");
 					setcookie("user_id", $this->user_id, time() + 86400 * 60, "/");
 					setcookie("role_id", $this->role_id, time() + 86400 * 60, "/");
 				}
+				
 
 				$_SESSION['user_email'] = $this->email;
 				$_SESSION['user_id'] = $this->user_id;

@@ -68,6 +68,10 @@
 				var phone = $("#user_contact").val();
 				var email = $("#user_email").val();
 				var pass = $("#user_password").val();
+				if ($("#user_signup_remember_me").prop("checked") == true) {
+					var user_signup_remember_me = 1;
+
+				}
         		//var passreg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 				if (name == "" || phone == "" || email == "" || pass == "") {
 					$("#signup_error").css("color", "red");
@@ -102,7 +106,8 @@
 							user_name: name,
 							user_contact: phone,
 							user_email: email,
-							user_password: pass
+							user_password: pass,
+							user_signup_remember_me: user_signup_remember_me
 						},
 						success: function(r) {
 							$("#email_error").html(r);
