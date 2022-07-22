@@ -9,11 +9,9 @@ if (isset($_SESSION['checkout-btn']) || isset($_SESSION['order_now_signup_btn'])
 
 	if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 		$u_obj = new user;
-
 		/* 
-						Remember: You should must call the insert_data() before fetch_latest_order_details() function in order to fetch the details of the latest Order
-					*/
-
+		Remember: You should must call the insert_data() before fetch_latest_order_details() function in order to fetch the details of the latest Order
+		*/
 		/*	Storing Information of the User who placed latest Order */
 		$_SESSION['user_info_row'] = $u_obj->insert_data();
 		$_SESSION['order_info_row'] = $u_obj->fetch_latest_order_details();
@@ -22,7 +20,6 @@ if (isset($_SESSION['checkout-btn']) || isset($_SESSION['order_now_signup_btn'])
 //Now these PHP Variables are converted into Associative Arrays
 $user_info_row = $_SESSION['user_info_row'];
 $order_info_row	= $_SESSION['order_info_row'];
-
 ?>
 
 <!doctype html>
@@ -530,7 +527,6 @@ $order_info_row	= $_SESSION['order_info_row'];
 </body>
 
 </html>
-<?php $order_info_row['order_price'] = 120; ?>
 <script>
 	$("#Proceed_To_Check_Out_btn").click(function() {
 		let amount = <?php echo $order_info_row['order_price'] ?>;
