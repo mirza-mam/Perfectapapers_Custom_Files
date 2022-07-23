@@ -8,7 +8,7 @@
 	<title> Order Now</title>
 
 	<?php include_once("assests_links.php"); ?>
-	  
+
 
 </head>
 
@@ -289,10 +289,10 @@
 						<div class="" id="">
 
 							<h5> Total Price: </h5>
-					
+
 							<h1>$<span id="user-tp" onch>0</span></h1>
 							<!--because php cannot read the paragraphs or span tags it can only read input field therefore we added input field in here!-->
-							<input  type ="hidden" id="user-tp-inputField" name="user-tp-inputField">
+							<input type="hidden" id="user-tp-inputField" name="user-tp-inputField">
 							<input type="checkbox" id="user-tp-chk-bx" name="user-tp-chk-bx"> Upfront Plan
 
 						</div>
@@ -439,12 +439,9 @@
 
 						</div>
 
-
 					</div>
 
-					<button type="submit" id="checkout-btn" name="checkout-btn" 
-					
-			    class="checkout-btn" onclick="check_user_sign_up()">Review Order Details</button>
+					<button type="submit" id="checkout-btn" name="checkout-btn" class="checkout-btn" onclick="check_user_sign_up()">Review Order Details</button>
 
 					<span id="user-assignment-details-err" style="color:red; display: block;"> </span>
 				</div>
@@ -564,386 +561,344 @@
 
 
 	<?php include_once("footer_for_custom_pages.php"); ?>
-
-
-	<script>
-		$("#btn_signup").click(
-
-			function() {
-
-				$("#signup_error").html("");
-				$("#email_error").html("");
-				$("#contact_error").html("");
-
-				var name = $("#user_name").val();
-				var phone = $("#user_contact").val();
-				var email = $("#user_email").val();
-				var pass = $("#user_password").val();
-
-
-				if (name == "" || phone == "" || email == "" || pass == "") {
-					$("#signup_error").html("Please fill all of the given fields to Signup!");
-					return false;
-				} else {
-
-					if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-						$("#email_error").css("color", "red");
-						$("#email_error").html("Please enter a valid Email");
-						return false;
-					}
-
-					if (phone.length > 10) {
-						$("#contact_error").css("color", "red");
-						$("#contact_error").html("Please enter a valid contact number");
-						return false;
-					}
-
-				}
-			}
-
-		);
-
-
-		function fetch_price_form() {
-
-			//To remove previous error message from the price-form-error span
-			var price_err = $("#price-form-error");
-			if (price_err.html() != "") {
-				price_err.html("");
-			}
-
-			//Variables to take all data from price form input fields
-			window.email = $("#user-email-price-form").val();
-			window.doctype = $("#user-document-type-price-form").val();
-			window.academic = $("#user-academic-level-price-form").val();
-			window.pages = $("#user-number-of-pages-price-form").val();
-			window.contact_code = $("#user-contact-code-price-form").val();
-			window.contact_number = $("#user-contact-price-form").va
-			window.deadline_time = $("#user-deadline-time-price-form").val();
-			window.deadline_date = $("#user-deadline-date-price-form").val();
-
-		}
-
-		//For Checking that either this user is already signed up??
-		function check_user_sign_up() {
-
-			//To remove previous error message from the price-form-error span
-			var details_err = $("#user-assignment-details-err");
-			if (details_err.html() != "") {
-				details_err.html("");
-			}
-			//Before checking User Signup must check that either he/she have filled all the details!!
-			var assignment_title = $("#user-assignment-title").val();
-			var doc_type = $("#user-document-type").val();
-			var citation_style = $("#user-citation-style").val();
-			var user_sources = $("#user-sources").val();
-
-			if (assignment_title != "" && doc_type != "" && citation_style != "" && user_sources != "") {
-				//alert($("#User_Order_Form").serialize());
-
-				$.ajax({
-					url: "check_sign_up_for_order_pg.php",
-					type: "POST",
-					data: $("#User_Order_Form").serialize(),
-					success: function(r) {
-						//alert(r);
-						if ($.trim(r) == "redirect") {
-							//alert(r);
-							window.location.replace("review_order_pg.php");
-						} else if ($.trim(r) == "NotSignedUp") {
-							//alert(r);
-							//For auto filling the SignUp Modal Fields which user had provided
-							$("#user_email").val(window.email);
-							$("#user_contact").val(window.contact_number);
-
-
-							//For auto displaying the SignUp Modal
-							$('#user_sign_up_modal').modal('show');
-						}
-					}
-
-				}); //AJAX Call Ends
-
-			} else {
-				$("#user-assignment-details-err").html("Please provide title, subject, citation style & sources.");
-			}
-
-		}
-
-		//For Calculating Price 
-		function cal_price() {
-
-			fetch_price_form();
-
-			if (window.email != "" && window.doctype != "" && window.academic != "" && window.pages != "" && window.contact_code != "" && window.contact_number != "" && window.deadline_time != "" && window.deadline_date != "") {
-
-				/*	Formula to calculate the total number of days between two dates selected by user */
-				var d2 = new Date(document.getElementById('user-deadline-date-price-form').value);
-
-				var date1 = new Date();
-
-				// To calculate the time difference of two dates 
-				var Difference_In_Time = d2.getTime() - date1.getTime();
-
-				// To calculate the no. of days between two dates 
-				var Difference_In_Days = parseInt(Difference_In_Time / (1000 * 3600 * 24));
-
-				var total_hours_in_days = Difference_In_Days * 24;
-
-				var overall_hours = total_hours_in_days + parseInt(window.deadline_time);
-				/*		
-				document.getElementById('show-date').innerHTML = total_hours_in_days + " " + window.deadline_time + " " + overall_hours + " " + window.pages; */
-
-				if (window.academic == "High school") {
-					if (overall_hours <= 12) {
-						$("#user-tp").html(window.pages * 20);
-						$("#user-tp-inputField").val(window.pages * 20);
-					}
-					//48 H == 2 D, here show the price of 24 H
-					else if (overall_hours < 48) {
-						$("#user-tp").html(window.pages * 18.75);
-						$("#user-tp-inputField").val(window.pages * 18.75);
-					}
-					//72 H == 3 D, here show the price of 48 H
-					else if (overall_hours < 72) {
-						$("#user-tp").html(window.pages * 17.50);
-						$("#user-tp-inputField").val(window.pages * 17.50);
-					}
-					//96 H == 4 D, here show the price of 72 H
-					else if (overall_hours < 96) {
-						$("#user-tp").html(window.pages * 16.00);
-						$("#user-tp-inputField").val(window.pages * 16.00);
-					}
-					//144 H == 6 D, here show the price of 120 H
-					else if (overall_hours < 144) {
-						$("#user-tp").html(window.pages * 15.00);
-						$("#user-tp-inputField").val(window.pages * 15.00);
-					}
-					//192 H == 8 D, here show the price of 120 H
-					else if (overall_hours < 192) {
-						$("#user-tp").html(window.pages * 14.50);
-						$("#user-tp-inputField").val(window.pages * 14.50);
-					}
-					//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
-					else {
-						$("#user-tp").html(window.pages * 14.00);
-						$("#user-tp-inputField").val(window.pages * 14.00);
-					}
-				} else if (window.academic == "college-undergraduate") {
-					if (overall_hours <= 12) {
-						$("#user-tp").html(window.pages * 21.25);
-						$("#user-tp-inputField").val(window.pages * 21.25);
-					}
-					//48 H == 2 D, here show the price of 24 H
-					else if (overall_hours < 48) {
-						$("#user-tp").html(window.pages * 20.25);
-						$("#user-tp-inputField").val(window.pages * 20.25);
-					}
-					//72 H == 3 D, here show the price of 48 H
-					else if (overall_hours < 72) {
-						$("#user-tp").html(window.pages * 18.75);
-						$("#user-tp-inputField").val(window.pages * 18.75);
-					}
-					//96 H == 4 D, here show the price of 72 H
-					else if (overall_hours < 96) {
-						$("#user-tp").html(window.pages * 16.50);
-						$("#user-tp-inputField").val(window.pages * 16.50);
-					}
-					//144 H == 6 D, here show the price of 120 H
-					else if (overall_hours < 144) {
-						$("#user-tp").html(window.pages * 15.50);
-						$("#user-tp-inputField").val(window.pages * 15.50);
-					}
-					//192 H == 8 D, here show the price of 120 H
-					else if (overall_hours < 192) {
-						$("#user-tp").html(window.pages * 15.00);
-						$("#user-tp-inputField").val(window.pages * 15.00);
-					}
-					//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
-					else {
-						$("#user-tp").html(window.pages * 15.00);
-						$("#user-tp-inputField").val(window.pages * 15.00);
-					}
-				} else if (window.academic == "Master") {
-					if (overall_hours <= 12) {
-						$("#user-tp").html("N/A");
-						$("#user-tp-inputField").val(0);
-					}
-					//48 H == 2 D, here show the price of 24 H
-					else if (overall_hours < 48) {
-						$("#user-tp").html(window.pages * 21.00);
-						$("#user-tp-inputField").val(window.pages * 21.00);
-					}
-					//72 H == 3 D, here show the price of 48 H
-					else if (overall_hours < 72) {
-						$("#user-tp").html(window.pages * 19.50);
-						$("#user-tp-inputField").val(window.pages * 19.50);
-					}
-					//96 H == 4 D, here show the price of 72 H
-					else if (overall_hours < 96) {
-						$("#user-tp").html(window.pages * 18.00);
-						$("#user-tp-inputField").val(window.pages * 18.00);
-					}
-					//144 H == 6 D, here show the price of 120 H
-					else if (overall_hours < 144) {
-						$("#user-tp").html(window.pages * 17.00);
-						$("#user-tp-inputField").val(window.pages * 17.00);
-					}
-					//192 H == 8 D, here show the price of 120 H
-					else if (overall_hours < 192) {
-						$("#user-tp").html(window.pages * 16.50);
-						$("#user-tp-inputField").val(window.pages * 16.50);
-					}
-					//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
-					else {
-						$("#user-tp").html(window.pages * 16.00);
-						$("#user-tp-inputField").val(window.pages * 16.00);
-					}
-				} else if (window.academic == "Doctoral") {
-					if (overall_hours <= 12) {
-						$("#user-tp").html("N/A");
-						$("#user-tp-inputField").val(0);
-					}
-					//48 H == 2 D, here show the price of 24 H
-					else if (overall_hours < 48) {
-						$("#user-tp").html("N/A");
-						$("#user-tp-inputField").val(0);
-					}
-					//72 H == 3 D, here show the price of 48 H
-					else if (overall_hours < 72) {
-						$("#user-tp").html(window.pages * 27.00);
-						$("#user-tp-inputField").val(window.pages * 27.00);
-					}
-					//96 H == 4 D, here show the price of 72 H
-					else if (overall_hours < 96) {
-						$("#user-tp").html(window.pages * 25.50);
-						$("#user-tp-inputField").val(window.pages * 25.50);
-					}
-					//144 H == 6 D, here show the price of 120 H
-					else if (overall_hours < 144) {
-						$("#user-tp").html(window.pages * 23.50);
-						$("#user-tp-inputField").val(window.pages * 23.50);
-					}
-					//192 H == 8 D, here show the price of 120 H
-					else if (overall_hours < 192) {
-						$("#user-tp").html(window.pages * 22.75);
-						$("#user-tp-inputField").val(window.pages * 22.75);
-					}
-					//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
-					else {
-						$("#user-tp").html(window.pages * 22.00);
-						$("#user-tp-inputField").val(window.pages * 22.00);
-					}
-				}
-
-
-				// This Logic will call $.ajax() to save available leads data only if a valid contact_number is given
-				if (window.contact_number.length == 10) {
-					// console.log($("#User_Order_Form").serialize());
-
-					$.ajax({
-						url: "save_available_leads_data.php",
-						type: "POST",
-						data: $("#User_Order_Form").serialize(),
-						success: function(r) {
-							// alert(r);
-						}
-
-					}); //AJAX Call Ends
-
-				} // Available Leads 'IF Statement' Ends
-
-			} // 'IF Statement' Ends
-
-		} //'cal_price()' Ends
-
-		/*$("#user-tp").change(function(){
-				alert("The text has been changed.");
-		});*/
-
-		//For calculating the price after selecting Upfront Plan checkbox
-		$("#user-tp-chk-bx").click(
-
-			function() {
-				var tp = $("#user-tp").html();
-
-
-				if ($("#user-ptp").html() != "0") {
-					$("#user-ptp").html("0");
-					$("#user-tp-inputField").val(tp);
-				} else {
-					$("#user-ptp").html(tp / 2);
-					$("#user-tp-inputField").val(tp / 2);
-				}
-			}
-
-		);
-
-
-
-		//For Showing next Form
-		$("#next-btn").click(
-
-			function() {
-
-				fetch_price_form();
-
-				if (window.email == "" || window.doctype == "" || window.academic == "" || window.pages == "" || window.contact_code == "" || window.contact_number == "" || window.deadline_time == "" || window.deadline_date == "") {
-					$("#price-form-error").html("Please fill all of the above fields to proceed");
-				} else {
-
-					if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(window.email)) {
-						$("#price-form-error").html("Please enter a valid Email");
-					} else {
-
-						$("#user-details-form-div").css("display", "block");
-					}
-
-				}
-			}
-
-		);
-
-		// Add the following code if you want the name of the file to appear on upload
-		$(".custom-file-input").on("change", function() {
-			var fileName = $(this).val().split("\\").pop();
-			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-		});
-
-		//Function for removing
-		function remove_white_spaces() {
-			var myTxtArea = document.getElementById('user-assignment-description');
-			myTxtArea.value = myTxtArea.value.replace(/^\s*|\s*$/g, '');
-		}
-
-		remove_white_spaces();
-
-
-		/* These JQUERY Functions are used to hide & show SignUp & Login Modals  */
-		$("#close_signup_modal").click(
-
-			function() {
-				$("#user_sign_up_modal").modal("hide");
-
-				$("#user_login_modal").modal("show");
-			}
-
-		);
-
-		$("#close_login_modal").click(
-
-			function() {
-				$("#user_login_modal").modal("hide");
-
-				$("#user_sign_up_modal").modal("show");
-			}
-
-		);
-		/* //End//These JQUERY Functions are used to hide & show SignUp & Login Modals  */
-	</script>
-
 	<?php include_once("tawkTo.php"); ?>
 
 </body>
 
 </html>
+
+<script>
+	$("#btn_signup").click(
+		function() {
+			$("#signup_error").html("");
+			$("#email_error").html("");
+			$("#contact_error").html("");
+
+			var name = $("#user_name").val();
+			var phone = $("#user_contact").val();
+			var email = $("#user_email").val();
+			var pass = $("#user_password").val();
+
+			if (name == "" || phone == "" || email == "" || pass == "") {
+				$("#signup_error").html("Please fill all of the given fields to Signup!");
+				return false;
+			} else {
+
+				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+					$("#email_error").css("color", "red");
+					$("#email_error").html("Please enter a valid Email");
+					return false;
+				}
+
+				if (phone.length > 10) {
+					$("#contact_error").css("color", "red");
+					$("#contact_error").html("Please enter a valid contact number");
+					return false;
+				}
+
+			}
+		}
+
+	);
+
+	function fetch_price_form() {
+		//To remove previous error message from the price-form-error span
+		var price_err = $("#price-form-error");
+		if (price_err.html() != "") {
+			price_err.html("");
+		}
+		//Variables to take all data from price form input fields
+		window.email = $("#user-email-price-form").val();
+		window.doctype = $("#user-document-type-price-form").val();
+		window.academic = $("#user-academic-level-price-form").val();
+		window.pages = $("#user-number-of-pages-price-form").val();
+		window.contact_code = $("#user-contact-code-price-form").val();
+		window.contact_number = $("#user-contact-price-form").va
+		window.deadline_time = $("#user-deadline-time-price-form").val();
+		window.deadline_date = $("#user-deadline-date-price-form").val();
+	}
+
+	//For Checking that either this user is already signed up??
+	function check_user_sign_up() {
+		//To remove previous error message from the price-form-error span
+		var details_err = $("#user-assignment-details-err");
+		if (details_err.html() != "") details_err.html("");
+
+		//Before checking User Signup must check that either he/she have filled all the details!!
+		var assignment_title = $("#user-assignment-title").val();
+		var doc_type = $("#user-document-type").val();
+		var citation_style = $("#user-citation-style").val();
+		var user_sources = $("#user-sources").val();
+
+		if (assignment_title != "" && doc_type != "" && citation_style != "" && user_sources != "") {
+			//alert($("#User_Order_Form").serialize());
+			$.ajax({
+				url: "check_sign_up_for_order_pg.php",
+				type: "POST",
+				data: $("#User_Order_Form").serialize(),
+				success: function(r) {
+					//alert(r);
+					if ($.trim(r) == "redirect") {
+						//alert(r);
+						window.location.replace("review_order_pg.php");
+					} else if ($.trim(r) == "NotSignedUp") {
+						//alert(r);
+						//For auto filling the SignUp Modal Fields which user had provided
+						$("#user_email").val(window.email);
+						$("#user_contact").val(window.contact_number);
+						//For auto displaying the SignUp Modal
+						$('#user_sign_up_modal').modal('show');
+					}
+				}
+			}); //AJAX Call Ends
+		} else {
+			$("#user-assignment-details-err").html("Please provide title, subject, citation style & sources.");
+		}
+	}
+
+	//For Calculating Price 
+	function cal_price() {
+
+		fetch_price_form();
+
+		if (window.email != "" && window.doctype != "" && window.academic != "" && window.pages != "" && window.contact_code != "" && window.contact_number != "" && window.deadline_time != "" && window.deadline_date != "") {
+
+			/*	Formula to calculate the total number of days between two dates selected by user */
+			var d2 = new Date(document.getElementById('user-deadline-date-price-form').value);
+
+			var date1 = new Date();
+
+			// To calculate the time difference of two dates 
+			var Difference_In_Time = d2.getTime() - date1.getTime();
+
+			// To calculate the no. of days between two dates 
+			var Difference_In_Days = parseInt(Difference_In_Time / (1000 * 3600 * 24));
+
+			var total_hours_in_days = Difference_In_Days * 24;
+
+			var overall_hours = total_hours_in_days + parseInt(window.deadline_time);
+			/*		
+			document.getElementById('show-date').innerHTML = total_hours_in_days + " " + window.deadline_time + " " + overall_hours + " " + window.pages; */
+
+			if (window.academic == "High school") {
+				if (overall_hours <= 12) {
+					$("#user-tp").html(window.pages * 20);
+					$("#user-tp-inputField").val(window.pages * 20);
+				}
+				//48 H == 2 D, here show the price of 24 H
+				else if (overall_hours < 48) {
+					$("#user-tp").html(window.pages * 18.75);
+					$("#user-tp-inputField").val(window.pages * 18.75);
+				}
+				//72 H == 3 D, here show the price of 48 H
+				else if (overall_hours < 72) {
+					$("#user-tp").html(window.pages * 17.50);
+					$("#user-tp-inputField").val(window.pages * 17.50);
+				}
+				//96 H == 4 D, here show the price of 72 H
+				else if (overall_hours < 96) {
+					$("#user-tp").html(window.pages * 16.00);
+					$("#user-tp-inputField").val(window.pages * 16.00);
+				}
+				//144 H == 6 D, here show the price of 120 H
+				else if (overall_hours < 144) {
+					$("#user-tp").html(window.pages * 15.00);
+					$("#user-tp-inputField").val(window.pages * 15.00);
+				}
+				//192 H == 8 D, here show the price of 120 H
+				else if (overall_hours < 192) {
+					$("#user-tp").html(window.pages * 14.50);
+					$("#user-tp-inputField").val(window.pages * 14.50);
+				}
+				//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
+				else {
+					$("#user-tp").html(window.pages * 14.00);
+					$("#user-tp-inputField").val(window.pages * 14.00);
+				}
+			} else if (window.academic == "college-undergraduate") {
+				if (overall_hours <= 12) {
+					$("#user-tp").html(window.pages * 21.25);
+					$("#user-tp-inputField").val(window.pages * 21.25);
+				}
+				//48 H == 2 D, here show the price of 24 H
+				else if (overall_hours < 48) {
+					$("#user-tp").html(window.pages * 20.25);
+					$("#user-tp-inputField").val(window.pages * 20.25);
+				}
+				//72 H == 3 D, here show the price of 48 H
+				else if (overall_hours < 72) {
+					$("#user-tp").html(window.pages * 18.75);
+					$("#user-tp-inputField").val(window.pages * 18.75);
+				}
+				//96 H == 4 D, here show the price of 72 H
+				else if (overall_hours < 96) {
+					$("#user-tp").html(window.pages * 16.50);
+					$("#user-tp-inputField").val(window.pages * 16.50);
+				}
+				//144 H == 6 D, here show the price of 120 H
+				else if (overall_hours < 144) {
+					$("#user-tp").html(window.pages * 15.50);
+					$("#user-tp-inputField").val(window.pages * 15.50);
+				}
+				//192 H == 8 D, here show the price of 120 H
+				else if (overall_hours < 192) {
+					$("#user-tp").html(window.pages * 15.00);
+					$("#user-tp-inputField").val(window.pages * 15.00);
+				}
+				//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
+				else {
+					$("#user-tp").html(window.pages * 15.00);
+					$("#user-tp-inputField").val(window.pages * 15.00);
+				}
+			} else if (window.academic == "Master") {
+				if (overall_hours <= 12) {
+					$("#user-tp").html("N/A");
+					$("#user-tp-inputField").val(0);
+				}
+				//48 H == 2 D, here show the price of 24 H
+				else if (overall_hours < 48) {
+					$("#user-tp").html(window.pages * 21.00);
+					$("#user-tp-inputField").val(window.pages * 21.00);
+				}
+				//72 H == 3 D, here show the price of 48 H
+				else if (overall_hours < 72) {
+					$("#user-tp").html(window.pages * 19.50);
+					$("#user-tp-inputField").val(window.pages * 19.50);
+				}
+				//96 H == 4 D, here show the price of 72 H
+				else if (overall_hours < 96) {
+					$("#user-tp").html(window.pages * 18.00);
+					$("#user-tp-inputField").val(window.pages * 18.00);
+				}
+				//144 H == 6 D, here show the price of 120 H
+				else if (overall_hours < 144) {
+					$("#user-tp").html(window.pages * 17.00);
+					$("#user-tp-inputField").val(window.pages * 17.00);
+				}
+				//192 H == 8 D, here show the price of 120 H
+				else if (overall_hours < 192) {
+					$("#user-tp").html(window.pages * 16.50);
+					$("#user-tp-inputField").val(window.pages * 16.50);
+				}
+				//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
+				else {
+					$("#user-tp").html(window.pages * 16.00);
+					$("#user-tp-inputField").val(window.pages * 16.00);
+				}
+			} else if (window.academic == "Doctoral") {
+				if (overall_hours <= 12) {
+					$("#user-tp").html("N/A");
+					$("#user-tp-inputField").val(0);
+				}
+				//48 H == 2 D, here show the price of 24 H
+				else if (overall_hours < 48) {
+					$("#user-tp").html("N/A");
+					$("#user-tp-inputField").val(0);
+				}
+				//72 H == 3 D, here show the price of 48 H
+				else if (overall_hours < 72) {
+					$("#user-tp").html(window.pages * 27.00);
+					$("#user-tp-inputField").val(window.pages * 27.00);
+				}
+				//96 H == 4 D, here show the price of 72 H
+				else if (overall_hours < 96) {
+					$("#user-tp").html(window.pages * 25.50);
+					$("#user-tp-inputField").val(window.pages * 25.50);
+				}
+				//144 H == 6 D, here show the price of 120 H
+				else if (overall_hours < 144) {
+					$("#user-tp").html(window.pages * 23.50);
+					$("#user-tp-inputField").val(window.pages * 23.50);
+				}
+				//192 H == 8 D, here show the price of 120 H
+				else if (overall_hours < 192) {
+					$("#user-tp").html(window.pages * 22.75);
+					$("#user-tp-inputField").val(window.pages * 22.75);
+				}
+				//192 H == 8 D, if user selects deadline >= 192 H then Price will remain constant
+				else {
+					$("#user-tp").html(window.pages * 22.00);
+					$("#user-tp-inputField").val(window.pages * 22.00);
+				}
+			}
+
+
+			// This Logic will call $.ajax() to save available leads data only if a valid contact_number is given
+			if (window.contact_number.length == 10) {
+				// console.log($("#User_Order_Form").serialize());
+
+				$.ajax({
+					url: "save_available_leads_data.php",
+					type: "POST",
+					data: $("#User_Order_Form").serialize(),
+					success: function(r) {
+						// alert(r);
+					}
+
+				}); //AJAX Call Ends
+
+			} // Available Leads 'IF Statement' Ends
+
+		} // 'IF Statement' Ends
+
+	} //'cal_price()' Ends
+
+	//For calculating the price after selecting Upfront Plan checkbox
+	$("#user-tp-chk-bx").click(
+		function() {
+			var tp = $("#user-tp").html();
+			if ($("#user-ptp").html() != "0") {
+				$("#user-ptp").html("0");
+				$("#user-tp-inputField").val(tp);
+			} else {
+				$("#user-ptp").html(tp / 2);
+				$("#user-tp-inputField").val(tp / 2);
+			}
+		}
+	);
+
+	//For Showing next Form
+	$("#next-btn").click(
+		function() {
+			fetch_price_form();
+			if (window.email == "" || window.doctype == "" || window.academic == "" || window.pages == "" || window.contact_code == "" || window.contact_number == "" || window.deadline_time == "" || window.deadline_date == "") {
+				$("#price-form-error").html("Please fill all of the above fields to proceed");
+			} else {
+				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(window.email)) {
+					$("#price-form-error").html("Please enter a valid Email");
+				} else {
+					$("#user-details-form-div").css("display", "block");
+				}
+			}
+		}
+	);
+
+	// Add the following code if you want the name of the file to appear on upload
+	$(".custom-file-input").on("change", function() {
+		var fileName = $(this).val().split("\\").pop();
+		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+
+	//Function for removing
+	function remove_white_spaces() {
+		var myTxtArea = document.getElementById('user-assignment-description');
+		myTxtArea.value = myTxtArea.value.replace(/^\s*|\s*$/g, '');
+	}
+	remove_white_spaces();
+
+	/* These JQUERY Functions are used to hide & show SignUp & Login Modals  */
+	$("#close_signup_modal").click(
+		function() {
+			$("#user_sign_up_modal").modal("hide");
+			$("#user_login_modal").modal("show");
+		}
+	);
+
+	$("#close_login_modal").click(
+		function() {
+			$("#user_login_modal").modal("hide");
+			$("#user_sign_up_modal").modal("show");
+		}
+	);
+	/* //End//These JQUERY Functions are used to hide & show SignUp & Login Modals  */
+</script>
