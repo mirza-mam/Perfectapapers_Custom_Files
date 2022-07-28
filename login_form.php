@@ -28,7 +28,7 @@
 
 			<div class="form-group col-md-8">
 				<label for="user_password">Password</label>
-				<input type="password" class="form-control" id="user_password" name="user_password" placeholder="Enter the correct Password">
+				<input type="password" class="form-control" id="user_password" name="user_password" placeholder="Enter the correct password...">
 			</div>
 			<div class="form-check">
 				<input type="checkbox" class="form-check-input" id="user_login_remember_me" name="user_login_remember_me">

@@ -28,7 +28,7 @@
 
 
 			<div class="form-group col-md-8">
-			
+
 				<label for="user_contact" id="contact_error">Phone </label>
 				<input type="number" class="form-control" id="user_contact" name="user_contact" placeholder="Phone number..." onkeypress="if(this.value.length==10){return false;}">
 			</div>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="form-group col-md-8">
 				<label for="user_password" id="password_error">Password</label>
-				<input type="password" class="form-control" id="user_password" name="user_password" placeholder="Enter the correct Password">
+				<input type="password" class="form-control" id="user_password" name="user_password" placeholder="Enter your password">
 			</div>
 			<div class="form-check">
 				<input type="checkbox" class="form-check-input" id="user_signup_remember_me" name="user_signup_remember_me">
@@ -56,9 +56,7 @@
 
 	<script>
 		$("#btn_signup").click(
-
 			function() {
-
 				$("#signup_error").html("");
 				$("#email_error").html("");
 				$("#password_error").html("");
@@ -68,36 +66,35 @@
 				var phone = $("#user_contact").val();
 				var email = $("#user_email").val();
 				var pass = $("#user_password").val();
+
 				if ($("#user_signup_remember_me").prop("checked") == true) {
 					var user_signup_remember_me = 1;
-
 				}
-        		//var passreg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
 				if (name == "" || phone == "" || email == "" || pass == "") {
 					$("#signup_error").css("color", "red");
 					$("#signup_error").html("Please fill all of the given fields to Signup!");
 					return false;
 				} else {
-
 					if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
 						$("#email_error").css("color", "red");
 						$("#email_error").html("Please enter a valid Email");
 						return false;
 					}
-					
+
 					if (phone.length > 10) {
 						$("#contact_error").css("color", "red");
 						$("#contact_error").html("Please enter a valid contact number");
 						return false;
 					}
 
-					if( !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(pass)){
-					$("#password_error").css("color", "red");
-					$("#password_error").html("Your password must be 8 characters long with one letter, number & special character");
-					return false;
-				}
+					if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(pass)) {
+						$("#password_error").css("color", "red");
+						$("#password_error").html("Your password must be 8 characters long with one letter, number & special character");
+						return false;
+					}
 
-				$.ajax({
+					$.ajax({
 						url: "includes/operations_user.php",
 						type: "POST",
 						data: {
@@ -115,10 +112,8 @@
 							return false;
 						}
 					});
-		
+				}
 			}
-			}
-
 		);
 	</script>
 

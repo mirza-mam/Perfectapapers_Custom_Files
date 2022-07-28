@@ -216,10 +216,8 @@
 			});
 
 		$("#del_ip_order_btn").click(
-
 			function() {
 				var v = $("#del_order_id").html();
-
 				$.ajax({
 					url: "../includes/operations_admin.php",
 					type: "POST",
@@ -228,15 +226,11 @@
 						order_id: v
 					},
 					success: function(r) {
-
 						$("#modal_for_del_row").modal("hide");
 						alert(r);
 						location.reload();
-
 					}
-
 				});
-
 			});
 	</script>
 

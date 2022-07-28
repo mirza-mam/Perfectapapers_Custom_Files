@@ -140,56 +140,49 @@
 	</div>
 	<!-- ****************** //Delete Modal************************** -->
 
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../custom-assets/jquery-3.2.1.min.js"></script>
-	<script src="../custom-assets/popper.min.js"></script>
-	<script src="../custom-assets/dist/js/bootstrap.min.js"></script>
-
-	<script src="../custom-assets/js/chart.min.js"></script>
-	<script src="../custom-assets/js/chart-data.js"></script>
-	<script src="../custom-assets/js/easypiechart.js"></script>
-	<script src="../custom-assets/js/easypiechart-data.js"></script>
-	<script src="../custom-assets/js/bootstrap-datepicker.js"></script>
-	<script src="../custom-assets/js/custom.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-
-	<script>
-		//This function is used to throw the ID of that anchor tag which triggers the Del Row Modal
-		$("a").click(
-
-			function(event) {
-				//alert("Related target is: " + event.target.id);
-				$("#AvailableLeads_id").html(event.target.id);
-			}
-
-		);
-
-
-		$("#del_AvailableLeads_row_btn").click(
-
-			function() {
-				var v = $("#AvailableLeads_id").html();
-				//  alert(v);
-				$.ajax({
-					url: "../includes/operations_admin.php",
-					type: "POST",
-					data: {
-						operation: 'del_AvailableLeads_row',
-						AvailableLeads_id: v
-					},
-					success: function(r) {
-						$("#modal_for_del_row").modal("hide");
-						alert(r);
-					}
-
-				});
-
-			});
-	</script>
-
 </body>
 
 </html>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../custom-assets/jquery-3.2.1.min.js"></script>
+<script src="../custom-assets/popper.min.js"></script>
+<script src="../custom-assets/dist/js/bootstrap.min.js"></script>
+
+<script src="../custom-assets/js/chart.min.js"></script>
+<script src="../custom-assets/js/chart-data.js"></script>
+<script src="../custom-assets/js/easypiechart.js"></script>
+<script src="../custom-assets/js/easypiechart-data.js"></script>
+<script src="../custom-assets/js/bootstrap-datepicker.js"></script>
+<script src="../custom-assets/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<script>
+	//This function is used to throw the ID of that anchor tag which triggers the Del Row Modal
+	$("a").click(
+		function(event) {
+			//alert("Related target is: " + event.target.id);
+			$("#AvailableLeads_id").html(event.target.id);
+		}
+	);
+
+	$("#del_AvailableLeads_row_btn").click(
+		function() {
+			var v = $("#AvailableLeads_id").html();
+			//  alert(v);
+			$.ajax({
+				url: "../includes/operations_admin.php",
+				type: "POST",
+				data: {
+					operation: 'del_AvailableLeads_row',
+					AvailableLeads_id: v
+				},
+				success: function(r) {
+					$("#modal_for_del_row").modal("hide");
+					alert(r);
+				}
+			});
+		});
+</script>

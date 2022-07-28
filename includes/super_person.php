@@ -13,53 +13,56 @@ This class cannot be instantiated . only the class that implement the methods of
 There can be more than one methods that can left undefined.*/
 
 
-
 //The DATABASE Connection File is ONLY INCLUDED in super_person CLASS
 include("connection.php");
 
-	abstract class super_person{
- 
-		protected $sp_last_id;
-		protected $name;
-		protected $email;
-		protected $pass;
-		protected $contact;
-		protected $role_id;
-		protected $user_id;
-		
-		abstract function insert_data();
-		abstract function check_data();
-		abstract function update_data();
-		abstract function delete_data();
-		
-		// $input = 10
-		protected function filter_data($input){
-	//connection.php included again in this function bcz $con has local scope
-	//include("includes/connection.php");
-		  $input = trim($input);
-		  $input = stripslashes($input);
-		  $input = htmlspecialchars($input);
-		  //$input = mysqli_real_escape_string($con ,$input);
-		  return $input;
-		}
-		
-		protected function run_query( $query ){
-			
-		//Make the Object of connection class so it can make CONNECTION
-		 $con_obj = new connection;
-		 $return_result = mysqli_query( $con_obj->connect_db(), $query);
-			
-			
-			if( $return_result )
-			{ //This is the Built In method of Connection Class for fetching Last ID
-				$this->sp_last_id = $con_obj->get_last_inserted_id();
-			}
-			
-		 	return $return_result;
-			
-		}
- 
+abstract class super_person
+{
+
+	protected $sp_last_id;
+	protected $name;
+	protected $email;
+	protected $pass;
+	protected $contact;
+	protected $role_id;
+	protected $user_id;
+
+	abstract function insert_data();
+	abstract function check_data();
+	abstract function update_data();
+	abstract function delete_data();
+
+	// $input = 10
+	protected function filter_data($input)
+	{
+		//connection.php included again in this function bcz $con has local scope
+		//include("includes/connection.php");
+		$input = trim($input);
+		$input = stripslashes($input);
+		$input = htmlspecialchars($input);
+		//$input = mysqli_real_escape_string($con ,$input);
+		return $input;
 	}
 
-?>
+	protected function filter_array($arr)
+	{
+		for ($i = 0; $i < count($arr); $i++) {
+			if (!is_numeric($arr[$i])) { 
+				return "Invalid Array";
+				exit;
+			}
+		}
+		return $arr;
+	}
 
+	protected function run_query($query)
+	{
+		//Make the Object of connection class so it can make CONNECTION
+		$con_obj = new connection;
+		$return_result = mysqli_query($con_obj->connect_db(), $query);
+		if ($return_result) { //This is the Built In method of Connection Class for fetching Last ID
+			$this->sp_last_id = $con_obj->get_last_inserted_id();
+		}
+		return $return_result;
+	}
+}

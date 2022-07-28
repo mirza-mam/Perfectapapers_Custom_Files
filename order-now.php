@@ -471,28 +471,26 @@
 						<form method="post" enctype="multipart/form-data" action="includes/operations_user.php">
 							<div class="form-group col-md-12">
 								<span id="signup_error" style="display:block; color:red;"> </span>
-								<label for="user_name"> Name </label>
+								<label for="user_name">Name</label>
 								<input type="text" class="form-control custom_form_control" id="user_name" name="user_name" placeholder="Name...">
 							</div>
 
-
 							<div class="form-group col-md-12">
-
-								<label for="user_contact" id="contact_error">Phone </label>
+								<label for="user_contact" id="contact_error">Phone</label>
 								<input type="text" class="form-control custom_form_control" id="user_contact" name="user_contact" placeholder="Phone number..." onkeypress="if(this.value.length==10){return false;}">
 							</div>
 
-
 							<div class="form-group col-md-12">
-
 								<label for="user_email" id="email_error">Email address</label>
 								<input type="email" class="form-control custom_form_control" id="user_email" name="user_email" aria-describedby="emailHelp" placeholder="Enter your email here...">
 								<small id="emailHelp" class="form-text text-muted">We will keep everything confidential. </small>
 							</div>
+
 							<div class="form-group col-md-12">
 								<label for="user_password">Password</label>
-								<input type="password" class="form-control custom_form_control" id="user_password" name="user_password" placeholder="Enter the correct Password">
+								<input type="password" class="form-control custom_form_control" id="user_password" name="user_password" placeholder="Enter your password...">
 							</div>
+
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="user_remember_me" name="user_remember_me">
 								<label class="form-check-label" for="user_remember_me">Remember me!</label>
@@ -538,7 +536,7 @@
 
 							<div class="form-group col-md-12">
 								<label for="user_password">Password</label>
-								<input type="password" class="form-control custom_form_control" id="user_password" name="user_password" placeholder="Enter the correct Password">
+								<input type="password" class="form-control custom_form_control" id="user_password" name="user_password" placeholder="Enter the correct password...">
 							</div>
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="user_login_remember_me" name="user_login_remember_me">
